@@ -6,7 +6,7 @@
 
 ## Content Quality
 
-- [x] No implementation details (languages, frameworks, APIs)
+- [ ] No implementation details (languages, frameworks, APIs) — *exception: Chrome + built-in APIs per 2026-03-20 clarification; see Notes*
 - [x] Focused on user value and business needs
 - [x] Written for non-technical stakeholders
 - [x] All mandatory sections completed
@@ -33,3 +33,4 @@
 
 - Validation performed against spec revision dated 2026-03-20. Re-run this checklist after material spec edits before `/speckit.plan`.
 - SC-005 references lightweight usability sessions; sample size is intentional minimum for early validation, not a production research claim.
+- **2026-03-20 clarify session**: Spec now names **Google Chrome** and **built-in Translation / AI translation APIs** (FR-011, FR-012, Assumptions). If scope expands beyond Chrome, refresh “Content Quality” items and relax or generalize those requirements.

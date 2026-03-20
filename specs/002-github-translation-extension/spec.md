@@ -5,6 +5,12 @@
 **Status**: Draft  
 **Input**: User description: "Browser extension optimized for translating GitHub content for developers (derived from product README): full-page translation preserving structure; selection and hover flows; optional higher-accuracy path via explicit user action; glossary with strict mode; code-aware comment-only translation; safe behavior around editable fields and PR view vs write surfaces."
 
+## Clarifications
+
+### Session 2026-03-20
+
+- **Q**: May translation rely on network-based processing outside the user’s device, or must all paths avoid sending page content off-device? → **A**: All features use Chrome’s built-in Translation API only; the higher-accuracy (“enhanced”) path uses Chrome’s built-in AI translation capability. The extension does not send content to separate external translation services (no third-party or product-operated translation backends).
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Translate a full GitHub reading surface without breaking the page (Priority: P1)
@@ -69,7 +75,7 @@ On pages that show code blocks, the user expects natural-language comments to be
 
 ### User Story 5 - Higher accuracy only when the user explicitly asks (Priority: P5)
 
-After selecting text, the user opens a context menu action to request a higher-accuracy translation for that selection when the default path is insufficient.
+After selecting text, the user opens a context menu action to request a higher-accuracy translation for that selection when the default path is insufficient, implemented with Chrome’s built-in AI translation capability when the browser makes it available.
 
 **Why this priority**: Balances speed for routine reading with precision for ambiguous passages without surprising latency or cost for every action.
 
@@ -104,6 +110,7 @@ The extension avoids translating text the user is editing. On pull requests, tra
 - Dynamic content loaded after scroll (infinite comments): newly loaded regions either receive translation under the same rules or clearly indicate they are not yet covered.
 - Unsupported browser or missing optional capability: features degrade gracefully with explicit messaging for the higher-accuracy path; core reading translation remains available where the platform allows extensions to operate.
 - Permission or host restrictions: if translation cannot run on a given GitHub URL pattern, the user sees a concise explanation rather than silent failure.
+- Chrome Translation API or built-in AI translation unavailable (disabled, unsupported build, or policy-blocked): the affected feature surfaces a clear message; the product MUST NOT substitute a third-party or extension-operated remote translator.
 
 ## Requirements *(mandatory)*
 
@@ -124,6 +131,8 @@ The extension avoids translating text the user is editing. On pull requests, tra
 - **FR-008**: On GitHub pull request pages, the product MUST disable or constrain whole-page translation while the user is in compose/write experiences and MUST allow translation in read/view experiences where Story 1 applies.
 - **FR-009**: The product MUST expose an explicit user action (e.g., context menu entry) to request a higher-accuracy translation for the current text selection, distinct from the default fast path.
 - **FR-010**: The product MUST surface user-visible errors when an optional capability (such as the higher-accuracy path) is unavailable, without corrupting page content.
+- **FR-011**: Full-page, selection, and hover translation MUST use Chrome’s built-in Translation API. The explicit higher-accuracy action MUST use Chrome’s built-in AI translation capability when the browser exposes it; it MUST NOT be implemented as a separate remote translation product or third-party API integrated by the extension.
+- **FR-012**: The extension MUST NOT transmit page text or user selections to any translation endpoint that is not part of invoking Chrome’s built-in Translation API or built-in AI translation capability (no self-hosted or third-party translation backends added by the extension).
 
 ### Key Entities *(include if feature involves data)*
 
@@ -133,7 +142,8 @@ The extension avoids translating text the user is editing. On pull requests, tra
 
 ### Assumptions
 
-- Users install the product as a browser extension and grant the permissions needed to read and adjust GitHub pages according to the browser’s standard prompts.
+- Users install the product as a Google Chrome extension and grant the permissions needed to read and adjust GitHub pages according to Chrome’s standard prompts.
+- Translation quality and availability follow Chrome’s built-in Translation API and built-in AI translation behavior (including any processing model internal to Chrome); the extension does not replace these with its own translation stack.
 - “GitHub” means the public `github.com` product UI; enterprise-hosted variants are out of scope unless explicitly added later.
 - Target language selection follows a simple global preference chosen by the user unless superseded by documented browser behavior the user controls.
 
