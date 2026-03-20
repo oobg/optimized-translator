@@ -28,12 +28,12 @@ description: "Task list for GitHub-focused developer translation extension (MV3)
 
 **Purpose**: Initialize the MV3 extension package, toolchain, and entrypoints.
 
-- [ ] T001 Create directory layout `extension/src/{background,content,options,popup,lib}`, `extension/public`, `extension/tests/{unit,fixtures}` per `specs/002-github-translation-extension/plan.md`
-- [ ] T002 Add `extension/package.json` with scripts for `build`, `test`, and `lint`; add dependencies TypeScript (≥5), Vite, Vitest, `@types/chrome`, `@types/dom-chromium-ai`
-- [ ] T003 [P] Add `extension/manifest.json` (MV3) with `service_worker`, `content_scripts` for `https://github.com/*`, and permissions `storage`, `contextMenus` per `specs/002-github-translation-extension/research.md`
-- [ ] T004 [P] Add `extension/tsconfig.json` targeting ES2022+ and strict settings aligned with repo conventions
-- [ ] T005 [P] Add `extension/vite.config.ts` multi-entry build for background, content, popup, and options pages
-- [ ] T006 [P] Extend repository root `eslint.config.mjs` (create if missing) so `extension/src/**/*.ts` is linted consistently with `npm run lint`
+- [x] T001 Create directory layout `extension/src/{background,content,options,popup,lib}`, `extension/public`, `extension/tests/{unit,fixtures}` per `specs/002-github-translation-extension/plan.md`
+- [x] T002 Add `extension/package.json` with scripts for `build`, `test`, and `lint`; add dependencies TypeScript (≥5), Vite, Vitest, `@types/chrome`, `@types/dom-chromium-ai`
+- [x] T003 [P] Add `extension/manifest.json` (MV3) with `service_worker`, `content_scripts` for `https://github.com/*`, and permissions `storage`, `contextMenus` per `specs/002-github-translation-extension/research.md`
+- [x] T004 [P] Add `extension/tsconfig.json` targeting ES2022+ and strict settings aligned with repo conventions
+- [x] T005 [P] Add `extension/vite.config.ts` multi-entry build for background, content, popup, and options pages
+- [x] T006 [P] Extend repository root `eslint.config.mjs` (create if missing) so `extension/src/**/*.ts` is linted consistently with `npm run lint`
 
 ---
 
@@ -43,18 +43,18 @@ description: "Task list for GitHub-focused developer translation extension (MV3)
 
 **⚠️ CRITICAL**: User stories depend on messaging and translation delegation matching `specs/002-github-translation-extension/contracts/extension-messages.md` and compose rules in `specs/002-github-translation-extension/contracts/github-surface.md`.
 
-- [ ] T007 Define `UserTranslationPreferences`, `GlossaryEntry`, and `ExtensionMessage` union types matching `specs/002-github-translation-extension/contracts/extension-messages.md` in `extension/src/lib/types/messages.ts`
-- [ ] T008 Implement load/save for preferences and glossary in `chrome.storage.local` in `extension/src/background/storage.ts` using fields from `specs/002-github-translation-extension/data-model.md`
-- [ ] T009 Implement inbound message router for `preferences/*` and `glossary/*` with correlated `requestId` in `extension/src/background/messages.ts`
-- [ ] T010 [P] Implement Chrome `Translator` wrapper (`availability`, `create`, chunk-friendly translate) mapping errors to `TranslateError` codes in `extension/src/lib/chrome/translator.ts`
-- [ ] T011 [P] Implement optional source-language detection helper using built-in Language Detector API in `extension/src/lib/chrome/language-detector.ts`
-- [ ] T012 Implement `translate/request` handling in the service worker delegating only to Chrome built-in APIs and replying with `translate/result` or `translate/error` in `extension/src/background/translate-coordinator.ts`
-- [ ] T013 [P] Implement GitHub URL/path helpers and host allowlist checks in `extension/src/lib/github/url.ts`
-- [ ] T014 [P] Implement compose-surface detection helpers (`textarea`, `input`, `contenteditable`) per `specs/002-github-translation-extension/contracts/github-surface.md` in `extension/src/lib/github/compose.ts`
-- [ ] T015 Add content script bootstrap that registers listeners and defers to future pipelines in `extension/src/content/main.ts`
-- [ ] T016 Wire service worker entry: storage init, message router, and translator coordinator registration in `extension/src/background/service-worker.ts`
-- [ ] T017 [P] Add popup HTML/TS entry and minimal UI shell reading/writing `preferences/get` and `preferences/set` in `extension/src/popup/popup.html` and `extension/src/popup/popup.ts`
-- [ ] T018 [P] Add options page HTML/TS shell for future glossary UI in `extension/src/options/options.html` and `extension/src/options/options.ts`
+- [x] T007 Define `UserTranslationPreferences`, `GlossaryEntry`, and `ExtensionMessage` union types matching `specs/002-github-translation-extension/contracts/extension-messages.md` in `extension/src/lib/types/messages.ts`
+- [x] T008 Implement load/save for preferences and glossary in `chrome.storage.local` in `extension/src/background/storage.ts` using fields from `specs/002-github-translation-extension/data-model.md`
+- [x] T009 Implement inbound message router for `preferences/*` and `glossary/*` with correlated `requestId` in `extension/src/background/messages.ts`
+- [x] T010 [P] Implement Chrome `Translator` wrapper (`availability`, `create`, chunk-friendly translate) mapping errors to `TranslateError` codes in `extension/src/lib/chrome/translator.ts`
+- [x] T011 [P] Implement optional source-language detection helper using built-in Language Detector API in `extension/src/lib/chrome/language-detector.ts`
+- [x] T012 Implement `translate/request` handling in the service worker delegating only to Chrome built-in APIs and replying with `translate/result` or `translate/error` in `extension/src/background/translate-coordinator.ts`
+- [x] T013 [P] Implement GitHub URL/path helpers and host allowlist checks in `extension/src/lib/github/url.ts`
+- [x] T014 [P] Implement compose-surface detection helpers (`textarea`, `input`, `contenteditable`) per `specs/002-github-translation-extension/contracts/github-surface.md` in `extension/src/lib/github/compose.ts`
+- [x] T015 Add content script bootstrap that registers listeners and defers to future pipelines in `extension/src/content/main.ts`
+- [x] T016 Wire service worker entry: storage init, message router, and translator coordinator registration in `extension/src/background/service-worker.ts`
+- [x] T017 [P] Add popup HTML/TS entry and minimal UI shell reading/writing `preferences/get` and `preferences/set` in `extension/src/popup/popup.html` and `extension/src/popup/popup.ts`
+- [x] T018 [P] Add options page HTML/TS shell for future glossary UI in `extension/src/options/options.html` and `extension/src/options/options.ts`
 
 **Checkpoint**: Messaging, storage, and Chrome-only translation path work end-to-end from a trivial content-script ping.
 
@@ -68,12 +68,12 @@ description: "Task list for GitHub-focused developer translation extension (MV3)
 
 ### Implementation for User Story 1
 
-- [ ] T019 [US1] Implement initial PR read vs write / tab-state detection stubs and exports in `extension/src/lib/github/pr-mode.ts`
-- [ ] T020 [US1] Implement non-destructive full-page text-node walker that skips excluded compose regions in `extension/src/content/full-page-walker.ts`
-- [ ] T021 [US1] Add throttled `MutationObserver` integration for lazily loaded thread content in `extension/src/content/full-page-observer.ts`
-- [ ] T022 [US1] Implement chunking/batching and `pathKind: "full"` translate requests in `extension/src/content/full-page-translate.ts`
-- [ ] T023 [US1] Wire `fullPageEnabled` toggle from popup to active tab content script in `extension/src/popup/popup.ts` and `extension/src/content/main.ts`
-- [ ] T024 [US1] Add user-visible loading/partial-coverage affordance without breaking layout in `extension/src/content/full-page-ui.ts`
+- [x] T019 [US1] Implement initial PR read vs write / tab-state detection stubs and exports in `extension/src/lib/github/pr-mode.ts`
+- [x] T020 [US1] Implement non-destructive full-page text-node walker that skips excluded compose regions in `extension/src/content/full-page-walker.ts`
+- [x] T021 [US1] Add throttled `MutationObserver` integration for lazily loaded thread content in `extension/src/content/full-page-observer.ts`
+- [x] T022 [US1] Implement chunking/batching and `pathKind: "full"` translate requests in `extension/src/content/full-page-translate.ts`
+- [x] T023 [US1] Wire `fullPageEnabled` toggle from popup to active tab content script in `extension/src/popup/popup.ts` and `extension/src/content/main.ts`
+- [x] T024 [US1] Add user-visible loading/partial-coverage affordance without breaking layout in `extension/src/content/full-page-ui.ts`
 
 **Checkpoint**: User Story 1 demonstrable on a long GitHub thread without blocking primary interactions.
 
@@ -87,10 +87,10 @@ description: "Task list for GitHub-focused developer translation extension (MV3)
 
 ### Implementation for User Story 2
 
-- [ ] T025 [P] [US2] Implement dismissible overlay DOM/CSS and lifecycle in `extension/src/content/overlay.ts`
-- [ ] T026 [US2] Implement selection capture, `pathKind: "selection"`, and overlay display in `extension/src/content/selection-translate.ts`
-- [ ] T027 [US2] Implement hover targets for eligible static text and `pathKind: "hover"` in `extension/src/content/hover-translate.ts`
-- [ ] T028 [US2] Expose `selectionEnabled` and `hoverEnabled` toggles in `extension/src/popup/popup.ts` and honor them in `extension/src/content/main.ts`
+- [x] T025 [P] [US2] Implement dismissible overlay DOM/CSS and lifecycle in `extension/src/content/overlay.ts`
+- [x] T026 [US2] Implement selection capture, `pathKind: "selection"`, and overlay display in `extension/src/content/selection-translate.ts`
+- [x] T027 [US2] Implement hover targets for eligible static text and `pathKind: "hover"` in `extension/src/content/hover-translate.ts`
+- [x] T028 [US2] Expose `selectionEnabled` and `hoverEnabled` toggles in `extension/src/popup/popup.ts` and honor them in `extension/src/content/main.ts`
 
 **Checkpoint**: User Story 2 works independently of glossary and code-aware logic (plain prose first).
 
@@ -104,10 +104,10 @@ description: "Task list for GitHub-focused developer translation extension (MV3)
 
 ### Implementation for User Story 3
 
-- [ ] T029 [P] [US3] Implement glossary mask/restore or equivalent pre/post translation pipeline in `extension/src/lib/glossary/mask.ts`
-- [ ] T030 [US3] Integrate glossary pipeline into full-page, selection, and hover code paths in `extension/src/content/translate-pipeline.ts`
-- [ ] T031 [US3] Build glossary list/editor UI (CRUD, strict flag, user notes) in `extension/src/options/glossary-ui.ts` with `extension/src/options/options.html` importing the options bundle
-- [ ] T032 [US3] Connect options UI to `glossary/list`, `glossary/upsert`, `glossary/delete` messages in `extension/src/options/glossary-store.ts`
+- [x] T029 [P] [US3] Implement glossary mask/restore or equivalent pre/post translation pipeline in `extension/src/lib/glossary/mask.ts`
+- [x] T030 [US3] Integrate glossary pipeline into full-page, selection, and hover code paths in `extension/src/content/translate-pipeline.ts`
+- [x] T031 [US3] Build glossary list/editor UI (CRUD, strict flag, user notes) in `extension/src/options/glossary-ui.ts` with `extension/src/options/options.html` importing the options bundle
+- [x] T032 [US3] Connect options UI to `glossary/list`, `glossary/upsert`, `glossary/delete` messages in `extension/src/options/glossary-store.ts`
 
 **Checkpoint**: Glossary changes persist and affect all active translation modes.
 
@@ -121,8 +121,8 @@ description: "Task list for GitHub-focused developer translation extension (MV3)
 
 ### Implementation for User Story 4
 
-- [ ] T033 [P] [US4] Implement conservative comment-span lexer (`//`, `#`, `/* */`, etc.) in `extension/src/lib/code/comment-spans.ts`
-- [ ] T034 [US4] Integrate code-region handling into full-page (and shared) pipelines in `extension/src/content/code-regions.ts`
+- [x] T033 [P] [US4] Implement conservative comment-span lexer (`//`, `#`, `/* */`, etc.) in `extension/src/lib/code/comment-spans.ts`
+- [x] T034 [US4] Integrate code-region handling into full-page (and shared) pipelines in `extension/src/content/code-regions.ts`
 
 **Checkpoint**: Code blocks behave distinctly from prose in translation pipelines.
 
@@ -136,9 +136,9 @@ description: "Task list for GitHub-focused developer translation extension (MV3)
 
 ### Implementation for User Story 5
 
-- [ ] T035 [US5] Register and handle context menu click for enhanced translation in `extension/src/background/context-menus.ts`
-- [ ] T036 [US5] Implement `pathKind: "enhanced"` flow with distinct UI labeling and optional wider local context in `extension/src/content/enhanced-translate.ts`
-- [ ] T037 [US5] Map `translate/error` to overlay or toast messaging for enhanced path in `extension/src/content/enhanced-ui.ts`
+- [x] T035 [US5] Register and handle context menu click for enhanced translation in `extension/src/background/context-menus.ts`
+- [x] T036 [US5] Implement `pathKind: "enhanced"` flow with distinct UI labeling and optional wider local context in `extension/src/content/enhanced-translate.ts`
+- [x] T037 [US5] Map `translate/error` to overlay or toast messaging for enhanced path in `extension/src/content/enhanced-ui.ts`
 
 **Checkpoint**: Enhanced path is opt-in, labeled, and degrades safely.
 
@@ -152,9 +152,9 @@ description: "Task list for GitHub-focused developer translation extension (MV3)
 
 ### Implementation for User Story 6
 
-- [ ] T038 [US6] Complete PR Write-tab and compose-surface gating for full-page mode in `extension/src/lib/github/pr-mode.ts`
-- [ ] T039 [US6] Centralize guards so bulk pipelines skip when focus is in excluded fields in `extension/src/content/compose-guards.ts`
-- [ ] T040 [US6] Maintain capability matrix `{ fullPage, hover, selection, enhanced }` vs GitHub UI state as documented constants in `extension/src/lib/github/surface-capabilities.ts`
+- [x] T038 [US6] Complete PR Write-tab and compose-surface gating for full-page mode in `extension/src/lib/github/pr-mode.ts`
+- [x] T039 [US6] Centralize guards so bulk pipelines skip when focus is in excluded fields in `extension/src/content/compose-guards.ts`
+- [x] T040 [US6] Maintain capability matrix `{ fullPage, hover, selection, enhanced }` vs GitHub UI state as documented constants in `extension/src/lib/github/surface-capabilities.ts`
 
 **Checkpoint**: Compose surfaces remain untouched; read views match Story 1 expectations.
 
@@ -164,12 +164,12 @@ description: "Task list for GitHub-focused developer translation extension (MV3)
 
 **Purpose**: Documentation, fixtures, and targeted unit tests from `plan.md` / `quickstart.md`.
 
-- [ ] T041 [P] Document local build, load-unpacked path, and Chrome/Translator prerequisites in `extension/README.md`
-- [ ] T042 [P] Add sanitized HTML snippets and URL checklist under `extension/tests/fixtures/` per `specs/002-github-translation-extension/contracts/github-surface.md`
-- [ ] T043 [P] Add Vitest unit tests for glossary masking in `extension/tests/unit/glossary-mask.test.ts`
-- [ ] T044 [P] Add Vitest unit tests for comment lexer in `extension/tests/unit/comment-spans.test.ts`
-- [ ] T045 [P] Add Vitest unit tests for GitHub URL/helpers in `extension/tests/unit/github-url.test.ts`
-- [ ] T046 Validate steps in `specs/002-github-translation-extension/quickstart.md` against the built extension and capture minimum Chrome notes in `extension/README.md`
+- [x] T041 [P] Document local build, load-unpacked path, and Chrome/Translator prerequisites in `extension/README.md`
+- [x] T042 [P] Add sanitized HTML snippets and URL checklist under `extension/tests/fixtures/` per `specs/002-github-translation-extension/contracts/github-surface.md`
+- [x] T043 [P] Add Vitest unit tests for glossary masking in `extension/tests/unit/glossary-mask.test.ts`
+- [x] T044 [P] Add Vitest unit tests for comment lexer in `extension/tests/unit/comment-spans.test.ts`
+- [x] T045 [P] Add Vitest unit tests for GitHub URL/helpers in `extension/tests/unit/github-url.test.ts`
+- [x] T046 Validate steps in `specs/002-github-translation-extension/quickstart.md` against the built extension and capture minimum Chrome notes in `extension/README.md`
 
 ---
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>optimized-translator</title>
+  </head>
+  <body>
+    <main class="wrap">
+      <h1>번역</h1>
+      <label class="row">
+        <span>대상 언어 (BCP-47)</span>
+        <input id="targetLang" type="text" autocomplete="off" />
+      </label>
+      <label class="row check">
+        <input id="fullPage" type="checkbox" />
+        <span>전체 페이지 번역</span>
+      </label>
+      <label class="row check">
+        <input id="selection" type="checkbox" />
+        <span>선택 번역</span>
+      </label>
+      <label class="row check">
+        <input id="hover" type="checkbox" />
+        <span>호버 번역</span>
+      </label>
+      <p class="hint">옵션에서 용어집을 관리할 수 있습니다.</p>
+      <button id="openOptions" type="button">옵션 열기</button>
+    </main>
+    <script type="module" src="./popup.ts"></script>
+  </body>
+</html>

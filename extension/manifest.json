@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "optimized-translator",
+  "version": "0.1.0",
+  "description": "GitHub-focused translation using Chrome built-in Translator API",
+  "permissions": ["storage", "contextMenus", "tabs"],
+  "host_permissions": ["https://github.com/*"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "optimized-translator"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

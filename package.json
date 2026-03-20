@@ -1,0 +1,18 @@
+{
+  "name": "optimized-translator",
+  "private": true,
+  "workspaces": [
+    "extension"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=extension",
+    "test": "npm run test --workspace=extension",
+    "lint": "npm run lint --workspace=extension"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "eslint": "^9.15.0",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.15.0"
+  }
+}

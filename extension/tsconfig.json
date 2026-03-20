@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "types": ["chrome", "dom-chromium-ai"]
+  },
+  "include": [
+    "src/**/*.ts",
+    "tests/**/*.ts",
+    "vite.config.ts",
+    "vite.content.config.ts",
+    "vitest.config.ts"
+  ]
+}
