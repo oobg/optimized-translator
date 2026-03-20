@@ -1,0 +1,35 @@
+---
+description: Project Development Guidelines
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# optimized-translator Development Guidelines
+
+Auto-generated from all feature plans. Last updated: 2026-03-20
+
+## Active Technologies
+
+- TypeScript (≥5.x) targeting ES2022+ for MV3 + Chrome Extensions Manifest V3; Built-in AI **Translator** / **Language Detector** APIs ([Chrome Translator API](https://developer.chrome.com/docs/ai/translator-api)); Vite (or equivalent) bundler; `@types/chrome`, `@types/dom-chromium-ai` (002-github-translation-extension)
+
+## Project Structure
+
+```text
+src/
+tests/
+```
+
+## Commands
+
+npm test && npm run lint
+
+## Code Style
+
+TypeScript (≥5.x) targeting ES2022+ for MV3: Follow standard conventions
+
+## Recent Changes
+
+- 002-github-translation-extension: Added TypeScript (≥5.x) targeting ES2022+ for MV3 + Chrome Extensions Manifest V3; Built-in AI **Translator** / **Language Detector** APIs ([Chrome Translator API](https://developer.chrome.com/docs/ai/translator-api)); Vite (or equivalent) bundler; `@types/chrome`, `@types/dom-chromium-ai`
+
+<!-- MANUAL ADDITIONS START -->
+<!-- MANUAL ADDITIONS END -->
