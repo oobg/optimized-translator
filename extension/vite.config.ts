@@ -44,29 +44,6 @@ export default defineConfig({
       name: "copy-manifest",
       closeBundle() {
         copyFileSync(resolve(root, "manifest.json"), resolve(root, "dist/manifest.json"));
-        // #region agent log
-        const contentPath = resolve(root, "dist/content.js");
-        const contentJsExists = existsSync(contentPath);
-        void fetch(
-          "http://127.0.0.1:7748/ingest/a9a94361-e6e9-4362-b1e8-87218b46f9f4",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "X-Debug-Session-Id": "b428c0",
-            },
-            body: JSON.stringify({
-              sessionId: "b428c0",
-              location: "vite.config.ts:copy-manifest.closeBundle",
-              message: "post-main-build dist/content.js present",
-              data: { contentJsExists, contentPath },
-              timestamp: Date.now(),
-              hypothesisId: "H_typo_emptyOutDir",
-              runId: "post-fix",
-            }),
-          },
-        ).catch(() => {});
-        // #endregion
       },
     },
     {

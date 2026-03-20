@@ -27,7 +27,7 @@ Deliver a **Google Chrome extension (MV3)** that improves reading and review on 
 
 | Check | Status |
 |--------|--------|
-| `.specify/memory/constitution.md` | **Template only** — principles are placeholders, not ratified project law. |
+| `.specify/memory/constitution.md` | **Ratified** (2026-03-20) — AI 다운로드 UX(와이파이 권장 + 진행률) 원칙 포함. |
 | Action | **PASS (provisional)** — gates enforced by **feature spec** FR/SC and Chrome platform constraints documented in `research.md` and `contracts/`. |
 
 **Post–Phase 1 re-check**: Design artifacts (`data-model.md`, `contracts/`, `quickstart.md`) align with FR-001–FR-012 and clarification on Chrome-only translation. No additional constitution violations identified.
