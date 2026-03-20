@@ -8,7 +8,7 @@ export default defineConfig({
   root,
   build: {
     outDir: "dist",
-    emptyDirOutDir: true,
+    emptyOutDir: true,
     lib: {
       entry: resolve(root, "src/content/main.ts"),
       name: "content",
