@@ -68,7 +68,8 @@ if [ -z "$FEATURE_DESCRIPTION" ]; then
 fi
 
 # Trim whitespace and validate description is not empty (e.g., user passed only whitespace)
-FEATURE_DESCRIPTION=$(echo "$FEATURE_DESCRIPTION" | xargs)
+# NOTE: Avoid `xargs` here because some sandboxed environments fail to resolve _SC_ARG_MAX.
+FEATURE_DESCRIPTION=$(printf '%s' "$FEATURE_DESCRIPTION" | awk '{$1=$1; print}')
 if [ -z "$FEATURE_DESCRIPTION" ]; then
     echo "Error: Feature description cannot be empty or contain only whitespace" >&2
     exit 1
