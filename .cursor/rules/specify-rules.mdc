@@ -9,6 +9,8 @@ alwaysApply: true
 Auto-generated from all feature plans. Last updated: 2026-03-20
 
 ## Active Technologies
+- TypeScript (>=5.x), ES2022+ target for MV3 + Chrome Extensions Manifest V3; built-in AI **Translator** / **LanguageDetector** APIs (004-enhanced-ai-download-ux)
+- N/A (다운로드 동의/진행 UI는 세션 단위 상태로 처리, 영속 저장은 선택) (004-enhanced-ai-download-ux)
 
 - TypeScript (≥5.x) targeting ES2022+ for MV3 + Chrome Extensions Manifest V3; Built-in AI **Translator** / **Language Detector** APIs ([Chrome Translator API](https://developer.chrome.com/docs/ai/translator-api)); Vite (or equivalent) bundler; `@types/chrome`, `@types/dom-chromium-ai` (002-github-translation-extension)
 
@@ -28,6 +30,7 @@ npm test && npm run lint
 TypeScript (≥5.x) targeting ES2022+ for MV3: Follow standard conventions
 
 ## Recent Changes
+- 004-enhanced-ai-download-ux: Added TypeScript (>=5.x), ES2022+ target for MV3 + Chrome Extensions Manifest V3; built-in AI **Translator** / **LanguageDetector** APIs
 
 - 002-github-translation-extension: Added TypeScript (≥5.x) targeting ES2022+ for MV3 + Chrome Extensions Manifest V3; Built-in AI **Translator** / **Language Detector** APIs ([Chrome Translator API](https://developer.chrome.com/docs/ai/translator-api)); Vite (or equivalent) bundler; `@types/chrome`, `@types/dom-chromium-ai`
 
