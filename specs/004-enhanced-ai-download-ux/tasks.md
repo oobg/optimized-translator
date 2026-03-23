@@ -17,9 +17,9 @@
 
 **Purpose**: Enhanced 다운로드/동의/진행/에러 UX를 렌더링하는 UI 기반을 먼저 만든다.
 
-- [ ] T001 [P] Extend `extension/src/content/overlay.ts` with `showDialog` (buttons + optional progress/variant) without breaking `showOverlay`
-- [ ] T002 [P] Create `extension/src/content/enhanced-download-ui.ts` (wifi consent/progress/cancel/error dialogs) using the new `overlay.ts` dialog primitive
-- [ ] T003 [P] Create `extension/src/content/enhanced-flow.ts` defining `EnhancedTranslationFlow` state + request-scoped cancellation guard helpers
+- [X] T001 [P] Extend `extension/src/content/overlay.ts` with `showDialog` (buttons + optional progress/variant) without breaking `showOverlay`
+- [X] T002 [P] Create `extension/src/content/enhanced-download-ui.ts` (wifi consent/progress/cancel/error dialogs) using the new `overlay.ts` dialog primitive
+- [X] T003 [P] Create `extension/src/content/enhanced-flow.ts` defining `EnhancedTranslationFlow` state + request-scoped cancellation guard helpers
 
 ---
 
@@ -29,10 +29,10 @@
 
 ⚠️ CRITICAL: No user story work can begin until this phase is complete
 
-- [ ] T004 [P] Implement native Translator download+translate with progress in `extension/src/lib/chrome/translator.ts` (support `create({ monitor })` and return cancel/destroy capability)
-- [ ] T005 [P] Update `extension/src/content/main.ts` to pass `message.requestId` into `runEnhancedTranslation(...)`
-- [ ] T006 [P] Refactor `extension/src/content/enhanced-translate.ts` to accept `requestId` and use `extension/src/content/enhanced-flow.ts` for request-scoped stale-cancel protection
-- [ ] T007 [P] Add fallback helper `runDefaultSelectionTranslation(...)` in `extension/src/content/enhanced-translate.ts` using `translateWithGlossary(..., "selection")` with the original selection `text`
+- [X] T004 [P] Implement native Translator download+translate with progress in `extension/src/lib/chrome/translator.ts` (support `create({ monitor })` and return cancel/destroy capability)
+- [X] T005 [P] Update `extension/src/content/main.ts` to pass `message.requestId` into `runEnhancedTranslation(...)`
+- [X] T006 [P] Refactor `extension/src/content/enhanced-translate.ts` to accept `requestId` and use `extension/src/content/enhanced-flow.ts` for request-scoped stale-cancel protection
+- [X] T007 [P] Add fallback helper `runDefaultSelectionTranslation(...)` in `extension/src/content/enhanced-translate.ts` using `translateWithGlossary(..., "selection")` with the original selection `text`
 
 ---
 
@@ -44,9 +44,9 @@
 
 ### Implementation for User Story 1
 
-- [ ] T008 [US1] In `extension/src/content/enhanced-translate.ts`, detect `downloadable` via `checkTranslatorAvailability(...)` and show wifi consent dialog from `extension/src/content/enhanced-download-ui.ts` before calling native `Translator.create(...)`
-- [ ] T009 [US1] Implement consent-stage cancel/decline in `extension/src/content/enhanced-translate.ts`: mark flow cancelled, close any consent UI, and ensure no download/progress translator session is created
-- [ ] T010 [US1] Implement explicit fallback button from the cancelled state in `extension/src/content/enhanced-translate.ts` that triggers `runDefaultSelectionTranslation(...)` with the same original `text` and current `prefs.targetLanguage`
+- [X] T008 [US1] In `extension/src/content/enhanced-translate.ts`, detect `downloadable` via `checkTranslatorAvailability(...)` and show wifi consent dialog from `extension/src/content/enhanced-download-ui.ts` before calling native `Translator.create(...)`
+- [X] T009 [US1] Implement consent-stage cancel/decline in `extension/src/content/enhanced-translate.ts`: mark flow cancelled, close any consent UI, and ensure no download/progress translator session is created
+- [X] T010 [US1] Implement explicit fallback button from the cancelled state in `extension/src/content/enhanced-translate.ts` that triggers `runDefaultSelectionTranslation(...)` with the same original `text` and current `prefs.targetLanguage`
 
 ---
 
@@ -58,10 +58,10 @@
 
 ### Implementation for User Story 2
 
-- [ ] T011 [US2] In `extension/src/content/enhanced-translate.ts`, wire “동의하고 다운로드” to native download+translate execution via the new monitor-capable API in `extension/src/lib/chrome/translator.ts`, while updating `EnhancedTranslationFlow`
-- [ ] T012 [P] [US2] Implement download progress rendering logic in `extension/src/content/enhanced-download-ui.ts` (handle loaded/total percent and indeterminate/phase transitions if applicable)
-- [ ] T013 [US2] Implement in `extension/src/content/enhanced-translate.ts` cancel-during-downloading: call destroy/cancel capability from `extension/src/lib/chrome/translator.ts`, mark cancelled, stop progress updates, and show cancelled state + fallback action
-- [ ] T014 [US2] Implement in `extension/src/content/enhanced-translate.ts` success and failure handling: on success show enhanced result, on failure show error state + explicit fallback button; never auto-switch to default without button click
+- [X] T011 [US2] In `extension/src/content/enhanced-translate.ts`, wire “동의하고 다운로드” to native download+translate execution via the new monitor-capable API in `extension/src/lib/chrome/translator.ts`, while updating `EnhancedTranslationFlow`
+- [X] T012 [P] [US2] Implement download progress rendering logic in `extension/src/content/enhanced-download-ui.ts` (handle loaded/total percent and indeterminate/phase transitions if applicable)
+- [X] T013 [US2] Implement in `extension/src/content/enhanced-translate.ts` cancel-during-downloading: call destroy/cancel capability from `extension/src/lib/chrome/translator.ts`, mark cancelled, stop progress updates, and show cancelled state + fallback action
+- [X] T014 [US2] Implement in `extension/src/content/enhanced-translate.ts` success and failure handling: on success show enhanced result, on failure show error state + explicit fallback button; never auto-switch to default without button click
 
 ---
 
@@ -73,10 +73,10 @@
 
 ### Implementation for User Story 3
 
-- [ ] T015 [US3] In `extension/src/content/enhanced-translate.ts`, handle availability outcomes other than `downloadable` (e.g., `unavailable`) by showing a native enhanced error state from `extension/src/content/enhanced-download-ui.ts` + explicit fallback action
-- [ ] T016 [US3] In `extension/src/content/enhanced-translate.ts`, map native download/translate errors to user-friendly messages and show an error UI with “기본 번역으로 계속” while enforcing “no automatic fallback”
-- [ ] T017 [US3] Remove enhanced path usage that depends on background `pathKind: "enhanced"` in `extension/src/content/enhanced-translate.ts` (Enhanced should call Translator API native flow directly)
-- [ ] T018 [US3] Ensure fallback button always retries the same request input using `runDefaultSelectionTranslation(...)` in `extension/src/content/enhanced-translate.ts` (same original `text` + same `prefs.targetLanguage`)
+- [X] T015 [US3] In `extension/src/content/enhanced-translate.ts`, handle availability outcomes other than `downloadable` (e.g., `unavailable`) by showing a native enhanced error state from `extension/src/content/enhanced-download-ui.ts` + explicit fallback action
+- [X] T016 [US3] In `extension/src/content/enhanced-translate.ts`, map native download/translate errors to user-friendly messages and show an error UI with “기본 번역으로 계속” while enforcing “no automatic fallback”
+- [X] T017 [US3] Remove enhanced path usage that depends on background `pathKind: "enhanced"` in `extension/src/content/enhanced-translate.ts` (Enhanced should call Translator API native flow directly)
+- [X] T018 [US3] Ensure fallback button always retries the same request input using `runDefaultSelectionTranslation(...)` in `extension/src/content/enhanced-translate.ts` (same original `text` + same `prefs.targetLanguage`)
 
 ---
 
@@ -84,9 +84,9 @@
 
 **Purpose**: 상태/오버레이 정합성, 디버깅 가능성, 문서화/QA 연결을 개선한다.
 
-- [ ] T019 [P] Update `extension/src/content/enhanced-ui.ts` to align result/error presentation with the new enhanced dialog/overlay variants (avoid conflicting overlays)
-- [ ] T020 [P] Add structured logging + state breadcrumbs in `extension/src/content/enhanced-translate.ts` and `extension/src/lib/chrome/translator.ts` for: consent-open, consent-accepted, download-progress, cancelled, failed, completed
-- [ ] T021 [P] Update `specs/004-enhanced-ai-download-ux/quickstart.md` to reflect the final UI labels/states used by this implementation (wifi-consent-open/progress-open/error-open/result-open)
+- [X] T019 [P] Update `extension/src/content/enhanced-ui.ts` to align result/error presentation with the new enhanced dialog/overlay variants (avoid conflicting overlays)
+- [X] T020 [P] Add structured logging + state breadcrumbs in `extension/src/content/enhanced-translate.ts` and `extension/src/lib/chrome/translator.ts` for: consent-open, consent-accepted, download-progress, cancelled, failed, completed
+- [X] T021 [P] Update `specs/004-enhanced-ai-download-ux/quickstart.md` to reflect the final UI labels/states used by this implementation (wifi-consent-open/progress-open/error-open/result-open)
 
 ---
 

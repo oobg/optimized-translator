@@ -96,7 +96,7 @@ chrome.runtime.onMessage.addListener(
     }
 
     if (message.type === "ot/run-enhanced-translate") {
-      void runEnhancedTranslation(message.text, prefs, glossary).then(() =>
+      void runEnhancedTranslation(message.requestId, message.text, prefs, glossary).then(() =>
         sendResponse({ ok: true })
       );
       return true;

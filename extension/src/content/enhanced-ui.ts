@@ -1,4 +1,4 @@
-import { showOverlay } from "./overlay.js";
+import { showDialog } from "./overlay.js";
 
 export function showEnhancedResult(body: string): void {
   const sel = window.getSelection();
@@ -9,21 +9,21 @@ export function showEnhancedResult(body: string): void {
     x = r.left;
     y = r.bottom + 8;
   }
-  showOverlay({
+  showDialog({
     x,
     y,
     title: "고정밀 번역 결과",
     body,
-    variant: "enhanced",
+    variant: "result",
   });
 }
 
 export function showEnhancedError(message: string): void {
-  showOverlay({
+  showDialog({
     x: 120,
     y: 160,
     title: "고정밀 번역을 사용할 수 없습니다",
     body: message,
-    variant: "enhanced",
+    variant: "error",
   });
 }
